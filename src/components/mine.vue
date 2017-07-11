@@ -1,5 +1,5 @@
 <template>
-	<div id="mine">我的内容</div>
+	<div id="mine">我的内容老我偶尔</div>
 </template>
 
 <script>
