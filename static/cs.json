@@ -1,0 +1,338 @@
+{
+  "result": {
+    "hasMore": false,
+    "tabItemNum": {
+      "allItemNum": 3,
+      "stockNotEnoughItemNum": 0,
+      "promotionItemNum": 1
+    },
+    "totalItemNum": 3,
+    "overMax": false,
+    "coudanResDTO": {
+      "shopLevelAdvancedSuggestionDTOList": [
+        {
+          "coudanStatus": 0,
+          "styles": {
+            
+          },
+          "parameters": {
+            
+          },
+          "searchKeys": {
+            
+          }
+        },
+        {
+          "coudanStatus": 2,
+          "promotionCode": "packageSale",
+          "shopId": 103930,
+          "promotionTag": "\u6253\u5305\u5356",
+          "shopIdEsc": "14gfg",
+          "styles": {
+            
+          },
+          "parameters": {
+            "limitNumber": "2",
+            "limitPrice": "10000"
+          },
+          "searchKeys": {
+            "promotionId": "700004871199"
+          }
+        }
+      ],
+      "delay": 500,
+      "cartLevelAdvancedSuggestionDTO": {
+        "coudanStatus": 0,
+        "styles": {
+          
+        },
+        "parameters": {
+          
+        },
+        "searchKeys": {
+          
+        }
+      }
+    },
+    "shopGroup": [
+      {
+        "promotionRelatedTagList": [
+          
+        ],
+        "shopRelatedTagList": [
+          
+        ],
+        "shopRelatedTagBlock": {
+          
+        },
+        "shopInfo": {
+          "isExcellentShop": false,
+          "shopName": "TT\u732B\u5BB6",
+          "shopId": 103930,
+          "shopIdEsc": "14gfg",
+          "isAbroadBshop": false,
+          "sellerUserId": 67009614,
+          "sellerUserIdEsc": "127shxw",
+          "isHideShopLink": false
+        },
+        "cartItemGroup": [
+          {
+            "skuImageBottomTagList": [
+              
+            ],
+            "lastUpdateTime": 1499846396,
+            "titleRelatedTagBlock": {
+              
+            },
+            "skuImageBottomTagBlock": {
+              
+            },
+            "titleRelatedTagList": [
+              
+            ],
+            "disCountFee": 3690,
+            "number": 1,
+            "remindRelatedTagList": [
+              
+            ],
+            "sku": {
+              "stockIdEsc": "1s35m3s",
+              "decorate": "7\u6298",
+              "skuAttributes": [
+                {
+                  "value": "\u9ED1\u8272",
+                  "key": "\u989C\u8272"
+                },
+                {
+                  "value": "35",
+                  "key": "\u5C3A\u7801"
+                }
+              ],
+              "itemId": 616372630,
+              "sellerUserIdEsc": "127shxw",
+              "currency": "RMB",
+              "imgHttps": "https:\/\/s11.mogucdn.com\/mlcdn\/c45406\/170615_4aji4dbg623fl1hb5dbefb7c04k56_640x960.jpg",
+              "imgUrl": "http:\/\/s17.mogucdn.com\/mlcdn\/c45406\/170615_4aji4dbg623fl1hb5dbefb7c04k56_640x960.jpg",
+              "nowprice": 8610,
+              "title": "\u751C\u7F8E\u98CE~\u7B80\u7EA6\u65B9\u5934\u65F6\u5C1A\u767E\u642D\u5E73\u5E95\u5355\u978B\u6C14\u8D28\u5B66\u9662\u98CE\u4EA4\u53C9\u7ED1\u5E26\u4F4E\u8DDF\u5973\u978B",
+              "stock": 27,
+              "price": 12300,
+              "stockId": 849176824,
+              "inValid": false,
+              "futureSale": false,
+              "sellerUserId": 67009614,
+              "itemIdEsc": "1kdy0dg"
+            },
+            "extensions": {
+              "lastAddSkuDetail": "{\"price\":8610}",
+              "source": "{\"ptp\":\"m1.Lm5z5._b_e10aa0ec3237678b_0.1.314qIC\"}",
+              "sourceMarket": ""
+            },
+            "skuNumberRelatedTagBlock": {
+              
+            },
+            "skuNumberRelatedTagList": [
+              
+            ],
+            "remindRelatedTagBlock": {
+              
+            },
+            "ptp": "m1.Lm5z5._b_e10aa0ec3237678b_0.1.314qIC"
+          }
+        ],
+        "groupTypeEnum": "NORMAL",
+        "promotionRelatedTagBlock": {
+          
+        }
+      },
+      {
+        "promotionRelatedTagList": [
+          {
+            "text": "\u6EE199\u5143\u51CF5",
+            "extra": {
+              
+            },
+            "image": "http:\/\/s17.mogucdn.com\/p1\/160512\/upload_ie4wenztha3dmyrxhazdambqgqyde_30x30.png",
+            "type": 5,
+            "tagNodeEnum": "SHOP_PROMOTION_REACH_REDUCE_TAG"
+          }
+        ],
+        "shopRelatedTagList": [
+          {
+            "extra": {
+              
+            },
+            "image": "http:\/\/s2.mogucdn.com\/p1\/170103\/idid_ie4wkmrrhbrgcojtmqzdambqgqyde_56x36.png",
+            "type": 2,
+            "tagNodeEnum": "QUALITY_SHOP_TAG"
+          }
+        ],
+        "shopRelatedTagBlock": {
+          "qualityShopTag": {
+            "extra": {
+              
+            },
+            "image": "http:\/\/s2.mogucdn.com\/p1\/170103\/idid_ie4wkmrrhbrgcojtmqzdambqgqyde_56x36.png",
+            "type": 2,
+            "tagNodeEnum": "QUALITY_SHOP_TAG"
+          }
+        },
+        "shopInfo": {
+          "isExcellentShop": false,
+          "shopName": "\u7F8E\u4E3D\u8BF4\u4F18\u9009",
+          "shopId": 1302372118,
+          "shopIdEsc": "1172spk4",
+          "isAbroadBshop": false,
+          "sellerUserId": 205420072,
+          "sellerUserIdEsc": "16slqbs",
+          "isHideShopLink": false
+        },
+        "cartItemGroup": [
+          {
+            "skuImageBottomTagList": [
+              
+            ],
+            "lastUpdateTime": 1499846377,
+            "titleRelatedTagBlock": {
+              
+            },
+            "skuImageBottomTagBlock": {
+              
+            },
+            "titleRelatedTagList": [
+              
+            ],
+            "disCountFee": 0,
+            "number": 1,
+            "remindRelatedTagList": [
+              
+            ],
+            "sku": {
+              "stockIdEsc": "1room9c",
+              "skuAttributes": [
+                {
+                  "value": "\u7C89\u8272",
+                  "key": "\u989C\u8272"
+                },
+                {
+                  "value": "L",
+                  "key": "\u5C3A\u7801"
+                }
+              ],
+              "itemId": 615389835,
+              "sellerUserIdEsc": "16slqbs",
+              "currency": "RMB",
+              "imgHttps": "https:\/\/s2.mogucdn.com\/p2\/170525\/upload_143ll68a7ed9fhb4dbk784g44i7lb_640x900.jpg",
+              "imgUrl": "http:\/\/s3.mogucdn.com\/p2\/170525\/upload_143ll68a7ed9fhb4dbk784g44i7lb_640x900.jpg",
+              "nowprice": 6875,
+              "title": "\u590F\u5B63\u8FDE\u8863\u88D9\u59732017\u65B0\u6B3E\u97E9\u7248\u65F6\u5C1A\u77ED\u8896\u4FEE\u8EAB\u8377\u53F6\u8FB9\u96EA\u7EBA\u88D9\u5B50",
+              "stock": 297,
+              "price": 6875,
+              "stockId": 837023036,
+              "inValid": false,
+              "futureSale": false,
+              "sellerUserId": 205420072,
+              "itemIdEsc": "1kcrvpq"
+            },
+            "extensions": {
+              "lastAddSkuDetail": "{\"price\":6875}",
+              "source": "{\"ptp\":\"m1.vmST4b._b_ea8105b37cd14f56_1.1.USpTbC\"}",
+              "sourceMarket": ""
+            },
+            "skuNumberRelatedTagBlock": {
+              
+            },
+            "skuNumberRelatedTagList": [
+              
+            ],
+            "remindRelatedTagBlock": {
+              
+            },
+            "ptp": "m1.vmST4b._b_ea8105b37cd14f56_1.1.USpTbC"
+          },
+          {
+            "skuImageBottomTagList": [
+              
+            ],
+            "lastUpdateTime": 1499846138,
+            "titleRelatedTagBlock": {
+              
+            },
+            "skuImageBottomTagBlock": {
+              
+            },
+            "titleRelatedTagList": [
+              
+            ],
+            "disCountFee": 0,
+            "number": 1,
+            "remindRelatedTagList": [
+              
+            ],
+            "sku": {
+              "stockIdEsc": "1room9g",
+              "skuAttributes": [
+                {
+                  "value": "\u9ED1\u8272",
+                  "key": "\u989C\u8272"
+                },
+                {
+                  "value": "S",
+                  "key": "\u5C3A\u7801"
+                }
+              ],
+              "itemId": 615389835,
+              "sellerUserIdEsc": "16slqbs",
+              "currency": "RMB",
+              "imgHttps": "https:\/\/s2.mogucdn.com\/p2\/170525\/upload_7l1ic04b3l21dd95b0faaebeab605_732x1030.jpg",
+              "imgUrl": "http:\/\/s3.mogucdn.com\/p2\/170525\/upload_7l1ic04b3l21dd95b0faaebeab605_732x1030.jpg",
+              "nowprice": 6875,
+              "title": "\u590F\u5B63\u8FDE\u8863\u88D9\u59732017\u65B0\u6B3E\u97E9\u7248\u65F6\u5C1A\u77ED\u8896\u4FEE\u8EAB\u8377\u53F6\u8FB9\u96EA\u7EBA\u88D9\u5B50",
+              "stock": 295,
+              "price": 6875,
+              "stockId": 837023038,
+              "inValid": false,
+              "futureSale": false,
+              "sellerUserId": 205420072,
+              "itemIdEsc": "1kcrvpq"
+            },
+            "extensions": {
+              "lastAddSkuDetail": "{\"price\":6875}",
+              "source": "{\"ptp\":\"m1.vmST4b._b_ea8105b37cd14f56_1.1.30NaFI\"}",
+              "sourceMarket": ""
+            },
+            "skuNumberRelatedTagBlock": {
+              
+            },
+            "skuNumberRelatedTagList": [
+              
+            ],
+            "remindRelatedTagBlock": {
+              
+            },
+            "ptp": "m1.vmST4b._b_ea8105b37cd14f56_1.1.30NaFI"
+          }
+        ],
+        "groupTypeEnum": "NORMAL",
+        "promotionRelatedTagBlock": {
+          "reachReduceTag": {
+            "text": "\u6EE199\u5143\u51CF5",
+            "extra": {
+              
+            },
+            "image": "http:\/\/s17.mogucdn.com\/p1\/160512\/upload_ie4wenztha3dmyrxhazdambqgqyde_30x30.png",
+            "type": 5,
+            "tagNodeEnum": "SHOP_PROMOTION_REACH_REDUCE_TAG"
+          }
+        }
+      }
+    ],
+    "coudanOpen": true
+  },
+  "status": {
+    "message": "\u6210\u529F",
+    "isLogin": true,
+    "code": 1001,
+    "msg": "\u6210\u529F"
+  }
+}

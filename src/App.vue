@@ -36,6 +36,8 @@ body{font:.12rem Arial,Verdana,Sans-serif;color: #666;}
 body,html,#app{height :100%;	width:100%;}
 .overflowHide{overflow: hidden;}
 html{font-size: 100px;}
+.clearfix:after{content: '';display: block;height: 0;line-height: 0;visibility: hidden;clear: both;
+}
 /*#app{font-size: .12rem;}*/
 #tab{width: 100%; height: .41rem; position: fixed; left: 0; bottom: 0; font-size: .12rem; border-top: 1px solid #E5E5E5; background: #fff;}
 #tab ul{padding: 0;}
