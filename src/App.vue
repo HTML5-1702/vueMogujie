@@ -1,34 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div id="tab">
-    	<ul>
-    		<li v-bind:class="{ active: tabIdx == 1 }" v-on:click="tabclick(1)">
-    			<router-link to="/home">
-    				<div class="img-wrap"></div>
-    				<div class="title active">首页</div>
-    			</router-link>
-    		</li>
-    		<li v-bind:class="{ active: tabIdx == 2 }" v-on:click="tabclick(2)">
-    			<router-link to="/category">
-    				<div class="img-wrap"></div>
-    				<div class="title active">分类</div>
-    			</router-link>
-    		</li>
-    		<li v-bind:class="{ active: tabIdx == 3 }" v-on:click="tabclick(3)">
-    			<router-link to="/shopcar">
-    				<div class="img-wrap"></div>
-    				<div class="title active">购物车</div>
-    			</router-link>
-    		</li>
-    		<li v-bind:class="{ active: tabIdx == 4 }" v-on:click="tabclick(4)">
-    			<router-link to="/mine">
-    				<div class="img-wrap"></div>
-    				<div class="title active">我的</div>
-    			</router-link>
-    		</li>
-    	</ul>
-    </div>
+   
   </div>
 </template>
 
@@ -36,14 +9,11 @@
 	export default {
 	  data(){
       return {
-      	tabIdx: localStorage.getItem('tabIdx') ? localStorage.getItem('tabIdx') : 1
+      	
       }
 	  },
 	  methods:{
-	  	tabclick: function (idx) {
-				localStorage.setItem('tabIdx', idx);
-	  		this.tabIdx = idx;
-	  	}
+	  	
 	  }
 	}
 	window.onload = function(){
