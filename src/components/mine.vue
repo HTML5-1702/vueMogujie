@@ -46,8 +46,6 @@
         <li><span id="mg"><i class="iconfont">&#xe61e;</i></span><p>下载App随时随地追踪订单<a>下载</a></p></li>
         <li><span id="wx"><i class="iconfont">&#xe615;</i></span><p>消息通知</p></li>
       </ul>
-
-
     </div>
   </div>
 </template>
