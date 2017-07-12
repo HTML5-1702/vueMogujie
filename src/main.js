@@ -5,7 +5,6 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
-import $ from 'jquery'
 import App from './App'
 import Home from './components/home'
 import Category from './components/category'
