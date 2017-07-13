@@ -3,14 +3,14 @@
 		<div class="search">
             <a class="im-talk" href="javascript:;"></a>
             <form class="search-form">
-                <input id="search-input" class="search" type="text" name="q" placeholder="露背无袖连衣裙" data-query-word="露背无袖连衣裙">
+                <input class="search" type="text" name="q" placeholder="露背无袖连衣裙" @focus="searchFocus()">
             </form>
             <a class="cart" href="javascript:;"></a>
 		</div>
 		<div class="categoryMain">
 			<div class="categoryLeft">
 				<ul>
-					<li v-for="i in categoryL" @click="maitKey(i.maitKey,i.miniWallkey)">{{i.title}}</li>
+					<li v-for="(i,index) in categoryL" @click="maitKey(i.maitKey,i.miniWallkey,index)" v-bind:class="{ active: categoryLIdx == index }"><span>{{i.title}}</span></li>
 				</ul>
 			</div>
 			<div class="categoryRight">
@@ -86,7 +86,8 @@ export default {
 	    return {
 	    	categoryL:[],
 	    	categoryR:[],
-	    	categoryList:[]
+	    	categoryList:[],
+	    	categoryLIdx:0
 	    }
 	},
 	mounted: function() {
@@ -109,25 +110,27 @@ export default {
 	    });
 	},
 	methods:{
-		maitKey:function(key1,key2){
+		maitKey:function(key1,key2,idx){
+			this.categoryLIdx = idx;
 	    	//右边分类
 		    this.$http.jsonp('http://mce.mogujie.com/jsonp/makeup/3?pid='+key1)
 		    .then(function(res) {
 		        this.categoryR = JSON.parse(res.bodyText).data.categoryNavigation.list;
 		    }),
 	    	//右边产品
+	    	console.log(key2)
 		    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid='+key2)
 		    .then(function(res) {
 		        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
 		    });
+		},
+		searchFocus:function(){
+			this.$router.push('/search');
 		}
 	}
 }
 
 $(function(){
-	$('.categoryLeft').css('height',$(window).height()-$('#tab').height()*2);
-	$('.categoryRight').css('height',$(window).height()-$('#tab').height()*2);
-	
 	$('.categoryRight').scroll(function(){
 		var categoryRTH = $('.categoryRTop').outerHeight();
 		console.log(categoryRTH)
@@ -151,10 +154,14 @@ $(function(){
 .search .im-talk,.search .cart{display: block; width: .427rem; height: .26rem; float: left; background-repeat: no-repeat; background-position: center; background-size: auto 68%;}
 .search .im-talk{background-image: url(../assets/top_icon1.png);}
 .search .cart{background-image: url(../assets/shopcar_icon.png);}
+.categoryMain{overflow: hidden;}
 .categoryLeft{width: .77rem; background: #F6F6F6;}
 .categoryRight{width: 2.43rem; background: #FFF;}
 .categoryLeft,.categoryRight{float: left; overflow-y: auto; overflow-x: hidden;}
-.categoryLeft li{width: 100%; height: .38rem; line-height: .38rem; text-align: center;}
+.categoryLeft li{width: 100%; height: .38rem; text-align: center; overflow: hidden;}
+.categoryLeft li span{display: block; width: 100%; height: .14rem; line-height: .14rem; margin-top: .12rem;}
+.categoryLeft li.active{background: #fff; color: #FF5777; font-weight: bold;}
+.categoryLeft li.active span{border-left: solid #FF5577 .04rem;}
 .categoryRTop{width: 100%; padding: .13rem .085rem; padding-bottom: 0;}
 .categoryRTop ul{width: 100%; border-bottom: solid #E5E5E5 1px; overflow: hidden;}
 .categoryRTop li{width: 33.33333%; float: left; margin: .085rem 0;}

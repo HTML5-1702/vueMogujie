@@ -24,6 +24,7 @@
 			var windowW = $(window).width();
 			$('html').css('font-size',parseInt(windowW/3.2)+'px');
 		}
+		$('.categoryLeft,.categoryRight').css('height',$(window).height()-$('.search').outerHeight()-$('#tab').outerHeight());
 	}
 </script>
 

@@ -5,12 +5,15 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+import $ from 'jquery'
 import App from './App'
 import Home from './components/home'
 import Category from './components/category'
 import Shopcar from './components/shopcar'
 import Mine from './components/mine'
 import Login from './components/login'
+import Search from './components/search'
+import SearchList from './components/searchlist'
 
 
 Vue.config.productionTip = false;
@@ -26,7 +29,9 @@ const routes = [
 	{path : '/category' , component : Category},
 	{path : '/shopcar' , component : Shopcar},
 	{path : '/mine' , component : Mine},
-  {path:'/login',component:Login}
+  {path:'/login',component:Login},
+	{path : '/search' , component : Search},
+	{path : '/searchlist' , component : SearchList}
 ];
 
 //创建路由对象
