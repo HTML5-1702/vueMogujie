@@ -39,7 +39,7 @@ const routes = [
 	{path : '/category' , component : Category},
 	{path : '/shopcar' , component : Shopcar},
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
-	{path : '/mine' , component : Mine}
+	{path : '/mine' , component : Mine},
   	{path : '/login',component:Login},
 	{path : '/search' , component : Search},
 	{path : '/searchlist' , component : SearchList},
