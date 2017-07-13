@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-   
+
   </div>
 </template>
 
@@ -9,11 +9,11 @@
 	export default {
 	  data(){
       return {
-      	
+
       }
 	  },
 	  methods:{
-	  	
+	      
 	  }
 	}
 	window.onload = function(){
@@ -24,6 +24,7 @@
 			var windowW = $(window).width();
 			$('html').css('font-size',parseInt(windowW/3.2)+'px');
 		}
+		$('.categoryLeft,.categoryRight').css('height',$(window).height()-$('.search').outerHeight()-$('#tab').outerHeight());
 	}
 </script>
 

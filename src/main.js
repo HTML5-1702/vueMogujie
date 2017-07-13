@@ -14,7 +14,12 @@ import Shopcar from './components/shopcar'
 import Mine from './components/mine'
 import GoodNormal from './components/Good-normal'
 
-Vue.config.productionTip = false
+import Login from './components/login'
+import Search from './components/search'
+import SearchList from './components/searchlist'
+
+
+Vue.config.productionTip = false;
 
 //安装
 Vue.use(VueRouter)
@@ -34,13 +39,15 @@ const routes = [
 	{path : '/shopcar' , component : Shopcar},
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
 	{path : '/mine' , component : Mine}
-]
+  	{path : '/login',component:Login},
+	{path : '/search' , component : Search},
+	{path : '/searchlist' , component : SearchList}
+];
 
 //创建路由对象
 const router = new VueRouter({
 	routes
 })
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
