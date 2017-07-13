@@ -6,17 +6,19 @@
       <p>忘记密码</p>
     </div>
     <div id="info">
-      <div class="account">
-        <p>蘑菇街账号</p>
-        <input type="text" placeholder="输入用户名/邮箱/手机">
-      </div>
-      <div class="account">
-        <p>密码</p>
-        <input type="text" placeholder="输入密码">
-      </div>
+
+        <div class="account">
+          <p>蘑菇街账号</p>
+          <input type="text" placeholder="输入用户名/邮箱/手机">
+        </div>
+        <div class="account">
+          <p>密码</p>
+          <input type="password" placeholder="输入密码">
+        </div>
+
     </div>
     <div id="enter">
-      <p><a href="">登录</a></p>
+      <input type="submit" @click="enterIn" value="登录">
     </div>
     <div id="enter-sort">
       <p><a href="">免密登录</a></p>
@@ -33,7 +35,17 @@
   </div>
 </template>
 <script>
+  export default{
 
+    methods: {
+      enterIn: function(){
+       if(localStorage.storage=true){
+         this.$router.push('/mine');
+       }
+        alert('恭喜您注册成功！');
+      }
+    }
+  }
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -73,11 +85,11 @@
     height:0.4rem;
   }
   .account input{font-size:0.18rem;
-    color:#f6f6f6;
+    color:#000;
     border-style: none;
     border-bottom:1px solid #ededed;}
   .account p{font-size:0.12rem;}
-  #enter{    width:2.97rem;
+  #enter{width:2.97rem;
     height:0.42rem;
     background:#ff1877;
     text-align: center;

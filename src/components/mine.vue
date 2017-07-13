@@ -79,6 +79,33 @@
   </div>
 </template>
 <script>
+  export default{
+
+//  var app =new Vue({
+//    data:{},
+//    el:"#app",
+//    render:h=> h(App),
+//    router,
+//    store,
+//    watch:{
+//      "route":'checkLogin'
+//    },
+    created(){
+      this.checkLogin();
+    },
+    methods:{
+        checkLogin(){
+
+//            if(JSON.parse(localStorage.getItem('storage')!=true)){
+//                this.$router.push('/login');
+//            }
+//            else{
+//                this.$router.push('/mine');
+//            }
+        }
+    }
+//  })
+  }
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}

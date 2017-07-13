@@ -10,27 +10,29 @@ import Home from './components/home'
 import Category from './components/category'
 import Shopcar from './components/shopcar'
 import Mine from './components/mine'
+import Login from './components/login'
 
-Vue.config.productionTip = false
+
+Vue.config.productionTip = false;
 
 //安装
-Vue.use(VueRouter)
-Vue.use(VueResource)
-Vue.use(VueAwesomeSwiper)
+Vue.use(VueRouter);
+Vue.use(VueResource);
+Vue.use(VueAwesomeSwiper);
 
 const routes = [
 	{path : '/' , redirect : '/home'},
 	{path : '/home' , component : Home},
 	{path : '/category' , component : Category},
 	{path : '/shopcar' , component : Shopcar},
-	{path : '/mine' , component : Mine}
-]
+	{path : '/mine' , component : Mine},
+  {path:'/login',component:Login}
+];
 
 //创建路由对象
 const router = new VueRouter({
 	routes
 })
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
