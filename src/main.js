@@ -13,10 +13,10 @@ import Category from './components/category'
 import Shopcar from './components/shopcar'
 import Mine from './components/mine'
 import GoodNormal from './components/Good-normal'
-
 import Login from './components/login'
 import Search from './components/search'
 import SearchList from './components/searchlist'
+import CategoryList from './components/categorylist'
 
 
 Vue.config.productionTip = false;
@@ -38,10 +38,11 @@ const routes = [
 	{path : '/category' , component : Category},
 	{path : '/shopcar' , component : Shopcar},
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
-	{path : '/mine' , component : Mine}
+	{path : '/mine' , component : Mine},
   	{path : '/login',component:Login},
 	{path : '/search' , component : Search},
-	{path : '/searchlist' , component : SearchList}
+	{path : '/searchlist' , component : SearchList},
+	{path : '/categorylist' , component : CategoryList}
 ];
 
 //创建路由对象

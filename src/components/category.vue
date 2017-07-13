@@ -17,8 +17,10 @@
 				<div class="categoryRTop">
 					<ul>
 						<li v-for="i in categoryR">
-							<img v-bind:src="i.image"/>
-							<p class="ng-binding">{{i.title}}</p>
+							<router-link :to="{path:'/categorylist/',query:{id:i.link}}">
+								<img v-bind:src="i.image"/>
+								<p class="ng-binding">{{i.title}}</p>
+							</router-link>
 						</li>
 					</ul>
 				</div>
@@ -95,19 +97,19 @@ export default {
 	    this.$http.jsonp('http://mce.mogucdn.com/jsonp/multiget/3?pids=41789')
 	    .then(function(res) {
 	        this.categoryL = res.data.data[41789].list;
+//	        console.log(this.categoryL)
 	    }),
 	    //右边分类
 	    this.$http.jsonp('http://mce.mogujie.com/jsonp/makeup/3?pid=41888')
 	    .then(function(res) {
 	        this.categoryR = JSON.parse(res.bodyText).data.categoryNavigation.list;
-	        console.log(this.categoryR)
 	    }),
     	//右边产品
 	    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid=10062603')
 	    .then(function(res) {
 	        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
-		        console.log(this.categoryList)
 	    });
+		$('.categoryLeft,.categoryRight').css('height',$(window).height()-$('.search').outerHeight()-$('#tab').outerHeight());
 	},
 	methods:{
 		maitKey:function(key1,key2,idx){
@@ -116,9 +118,10 @@ export default {
 		    this.$http.jsonp('http://mce.mogujie.com/jsonp/makeup/3?pid='+key1)
 		    .then(function(res) {
 		        this.categoryR = JSON.parse(res.bodyText).data.categoryNavigation.list;
+//	        	console.log(key1)
+//	        	console.log(JSON.parse(res.bodyText))
 		    }),
 	    	//右边产品
-	    	console.log(key2)
 		    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid='+key2)
 		    .then(function(res) {
 		        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
@@ -133,7 +136,6 @@ export default {
 $(function(){
 	$('.categoryRight').scroll(function(){
 		var categoryRTH = $('.categoryRTop').outerHeight();
-		console.log(categoryRTH)
 		if($('.categoryRight').scrollTop()>=categoryRTH){
 			$('.list_operation').css({
 				'position':'fixed',
