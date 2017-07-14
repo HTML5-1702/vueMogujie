@@ -8,9 +8,11 @@
       </div>
     </div>
     <div id="indent">
+      <router-link to='/indent'>
       <p>
         <span id="pic"><i class="iconfont">&#xe692;</i></span><span><a href="">我的订单</a></span></p>
       <p><a href="">></a></p>
+      </router-link>
     </div>
     <div id="indent-list">
       <ul>
@@ -71,7 +73,7 @@
         <li class="active">
           <router-link to="/mine">
             <div class="img-wrap"></div>
-            <div class="title active">我的</div>
+            <div class="title active" >我的</div>
           </router-link>
         </li>
       </ul>
@@ -80,29 +82,18 @@
 </template>
 <script>
   export default{
-
-//  var app =new Vue({
-//    data:{},
-//    el:"#app",
-//    render:h=> h(App),
-//    router,
-//    store,
-//    watch:{
-//      "route":'checkLogin'
-//    },
     created(){
       this.checkLogin();
     },
     methods:{
         checkLogin(){
+            //本地存储值为false的情况下，跳转到登录界面
+            if(JSON.parse(localStorage.getItem('storage'))!=true){
+                this.$router.push('/login');
+            }
+          localStorage.removeItem('storage')
+        },
 
-//            if(JSON.parse(localStorage.getItem('storage')!=true)){
-//                this.$router.push('/login');
-//            }
-//            else{
-//                this.$router.push('/mine');
-//            }
-        }
     }
 //  })
   }

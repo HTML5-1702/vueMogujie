@@ -1,25 +1,26 @@
 <template>
-  <div id="login">
+  <div class="login">
     <div id="title">
       <p><i class="iconfont">&#xe602;</i></p>
       <p>登录</p>
       <p>忘记密码</p>
     </div>
     <div id="info">
-
         <div class="account">
           <p>蘑菇街账号</p>
-          <input type="text" placeholder="输入用户名/邮箱/手机">
+          <input type="text" placeholder="输入用户名/邮箱/手机" v-model.trim="number" v-verify="number">
+          <label v-verified="verifyError.number"></label>
         </div>
         <div class="account">
           <p>密码</p>
-          <input type="password" placeholder="输入密码">
+          <input type="password" placeholder="输入密码" v-model.trim="pwd">
+          <label v-verified="verifyError.pwd"></label>
         </div>
-
     </div>
     <div id="enter">
-      <input type="submit" @click="enterIn" value="登录">
+      <button @click="submit">登录</button>
     </div>
+    <!--<div>{{$verify.$errorArray}}</div>-->
     <div id="enter-sort">
       <p><a href="">免密登录</a></p>
       <p><a href="">注册账号</a></p>
@@ -27,7 +28,7 @@
     <div id="qq">
       <div id="include">
         <a href="">
-          <p> <i class="iconfont">&#xe61a;</i> </p>
+          <p><i class="iconfont">&#xe61a;</i></p>
           <p>QQ登录</p>
         </a>
       </div>
@@ -36,16 +37,42 @@
 </template>
 <script>
   export default{
-
-    methods: {
-      enterIn: function(){
-       if(localStorage.storage=true){
-         this.$router.push('/mine');
-       }
-        alert('恭喜您注册成功！');
+      name:'login',
+      data(){
+         return {
+           number:'',
+           pwd:'',
+         }
+      },
+  verify:{
+    number:[
+        'required',
+      {
+          minLength:11,
+          message:'手机号码为11位数'
       }
+    ],
+    pwd:{
+        minLength:6,
+        message:'密码至少6位数'
     }
-  }
+  },
+    computed:{
+      verifyError:function () {
+        return this.$verify.$errors;
+      }
+    },
+    methods: {
+          submit:function () {
+              console.log(this.$verify.check());
+              //验证正确跳转
+              if(this.$verify.check()==true){
+                localStorage.storage=true;
+                this.$router.push('/mine');
+              }
+          }
+      },
+    }
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -63,12 +90,13 @@
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;}
   #title{width:3.2rem;
-    height:0.37rem;
+    height:0.6rem;
     background:#fafafa;
     border-bottom:1px solid #c9c7c8;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    line-height:0.6rem;
   }
   #info{
     width:3.2rem;
