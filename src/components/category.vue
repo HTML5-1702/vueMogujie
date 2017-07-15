@@ -3,22 +3,24 @@
 		<div class="search">
             <a class="im-talk" href="javascript:;"></a>
             <form class="search-form">
-                <input id="search-input" class="search" type="text" name="q" placeholder="露背无袖连衣裙" data-query-word="露背无袖连衣裙">
+                <input class="search" type="text" name="q" placeholder="露背无袖连衣裙" @focus="searchFocus()">
             </form>
             <a class="cart" href="javascript:;"></a>
 		</div>
 		<div class="categoryMain">
 			<div class="categoryLeft">
 				<ul>
-					<li v-for="i in categoryL" @click="maitKey(i.maitKey,i.miniWallkey)">{{i.title}}</li>
+					<li v-for="(i,index) in categoryL" @click="maitKey(i.maitKey,i.miniWallkey,index)" v-bind:class="{ active: categoryLIdx == index }"><span>{{i.title}}</span></li>
 				</ul>
 			</div>
 			<div class="categoryRight">
 				<div class="categoryRTop">
 					<ul>
 						<li v-for="i in categoryR">
-							<img v-bind:src="i.image"/>
-							<p class="ng-binding">{{i.title}}</p>
+							<router-link :to="{path:'/categorylist/',query:{id:i.link}}">
+								<img v-bind:src="i.image"/>
+								<p class="ng-binding">{{i.title}}</p>
+							</router-link>
 						</li>
 					</ul>
 				</div>
@@ -32,17 +34,19 @@
 					</div>
 					<ul class="category_ul">
 						<li v-for="i in categoryList">
-							<div class="goods_img">
-					            <img class="J_dynamic_img fill_img" v-bind:src="i.img"/>
-					            <div class="bo_pv">已售{{i.sale}}件</div>
-							</div>
-        					<div class="goods_info">
-        						<p class="goods_name">{{i.title}}</p>
-	           					<div class="bot_box clearfix">
-	                				<p class="p_price">￥{{i.price}}</p>
-	                                <p class="p_feed">{{i.cfav}}</p>
-	                           </div>
-       						</div>
+							<!--<router-link :to="{name:'goodnormal',params:{id:good.sku.itemIdEsc}}">-->
+								<div class="goods_img">
+						            <img class="J_dynamic_img fill_img" v-bind:src="i.img"/>
+						            <div class="bo_pv">已售{{i.sale}}件</div>
+								</div>
+	        					<div class="goods_info">
+	        						<p class="goods_name">{{i.title}}</p>
+		           					<div class="bot_box clearfix">
+		                				<p class="p_price">￥{{i.price}}</p>
+		                                <p class="p_feed">{{i.cfav}}</p>
+		                           </div>
+	       						</div>
+	       					<!--</router-link>-->
 						</li>
 					</ul>
 				</div>
@@ -86,7 +90,8 @@ export default {
 	    return {
 	    	categoryL:[],
 	    	categoryR:[],
-	    	categoryList:[]
+	    	categoryList:[],
+	    	categoryLIdx:0
 	    }
 	},
 	mounted: function() {
@@ -94,43 +99,46 @@ export default {
 	    this.$http.jsonp('http://mce.mogucdn.com/jsonp/multiget/3?pids=41789')
 	    .then(function(res) {
 	        this.categoryL = res.data.data[41789].list;
+//	        console.log(this.categoryL)
 	    }),
 	    //右边分类
 	    this.$http.jsonp('http://mce.mogujie.com/jsonp/makeup/3?pid=41888')
 	    .then(function(res) {
 	        this.categoryR = JSON.parse(res.bodyText).data.categoryNavigation.list;
-	        console.log(this.categoryR)
 	    }),
     	//右边产品
 	    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid=10062603')
 	    .then(function(res) {
 	        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
-		        console.log(this.categoryList)
+	        console.log(this.categoryList)
 	    });
+		$('.categoryLeft,.categoryRight').css('height',$(window).height()-$('.search').outerHeight()-$('#tab').outerHeight());
 	},
 	methods:{
-		maitKey:function(key1,key2){
+		maitKey:function(key1,key2,idx){
+			this.categoryLIdx = idx;
 	    	//右边分类
 		    this.$http.jsonp('http://mce.mogujie.com/jsonp/makeup/3?pid='+key1)
 		    .then(function(res) {
 		        this.categoryR = JSON.parse(res.bodyText).data.categoryNavigation.list;
+//	        	console.log(key1)
+//	        	console.log(JSON.parse(res.bodyText))
 		    }),
 	    	//右边产品
 		    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid='+key2)
 		    .then(function(res) {
 		        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
 		    });
+		},
+		searchFocus:function(){
+			this.$router.push('/search');
 		}
 	}
 }
 
 $(function(){
-	$('.categoryLeft').css('height',$(window).height()-$('#tab').height()*2);
-	$('.categoryRight').css('height',$(window).height()-$('#tab').height()*2);
-	
 	$('.categoryRight').scroll(function(){
 		var categoryRTH = $('.categoryRTop').outerHeight();
-		console.log(categoryRTH)
 		if($('.categoryRight').scrollTop()>=categoryRTH){
 			$('.list_operation').css({
 				'position':'fixed',
@@ -151,10 +159,14 @@ $(function(){
 .search .im-talk,.search .cart{display: block; width: .427rem; height: .26rem; float: left; background-repeat: no-repeat; background-position: center; background-size: auto 68%;}
 .search .im-talk{background-image: url(../assets/top_icon1.png);}
 .search .cart{background-image: url(../assets/shopcar_icon.png);}
+.categoryMain{overflow: hidden;}
 .categoryLeft{width: .77rem; background: #F6F6F6;}
 .categoryRight{width: 2.43rem; background: #FFF;}
 .categoryLeft,.categoryRight{float: left; overflow-y: auto; overflow-x: hidden;}
-.categoryLeft li{width: 100%; height: .38rem; line-height: .38rem; text-align: center;}
+.categoryLeft li{width: 100%; height: .38rem; text-align: center; overflow: hidden;}
+.categoryLeft li span{display: block; width: 100%; height: .14rem; line-height: .14rem; margin-top: .12rem;}
+.categoryLeft li.active{background: #fff; color: #FF5777; font-weight: bold;}
+.categoryLeft li.active span{border-left: solid #FF5577 .04rem;}
 .categoryRTop{width: 100%; padding: .13rem .085rem; padding-bottom: 0;}
 .categoryRTop ul{width: 100%; border-bottom: solid #E5E5E5 1px; overflow: hidden;}
 .categoryRTop li{width: 33.33333%; float: left; margin: .085rem 0;}

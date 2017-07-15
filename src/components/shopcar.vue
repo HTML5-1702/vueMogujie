@@ -15,22 +15,41 @@
 				<p class="shop-name">
 					<span class="shop-checkbox"></span>
 					{{shop.shopInfo.shopName}}
+					<img v-if="shop.shopRelatedTagList.length==1" :src="shop.shopRelatedTagList[0].image" class="shop-logo"/>
+					<span v-if="shop.promotionRelatedTagList.length==1" class="shop-coupon">领卷 ></span>
 				</p>
-				<div v-for="good in shop.cartItemGroup" class="goods">
-					<span class="good-checkbox"></span>
-					<div class="cartgood clearfix">
-						<a href="" class="cartgood-pic">
-							<img v-bind:src="good.sku.imgUrl"/>
-						</a>
-						<div class="cgood-desc">
-							<a href="" class="cgood-desc-ts-title">{{good.sku.title}}</a>
-							<p class="cgood-desc-ts-sku">
-								{{good.sku.skuAttributes[0].key}} :
-								{{good.sku.skuAttributes[0].value}} ;
-								{{good.sku.skuAttributes[1].key}} :
-								{{good.sku.skuAttributes[1].value}} ;</p>
+				<div class="goods">
+					<div v-for="good in shop.cartItemGroup">
+						<span class="good-checkbox"></span>
+						<div class="cartgood clearfix">
+							<router-link :to="{name:'goodnormal',params:{id:good.sku.itemIdEsc}} "class="cartgood-pic">
+								<img :src="good.sku.imgUrl"/>
+							</router-link>
+							<div class="cgood-desc">
+								<a href="" class="cgood-desc-ts-title">{{good.sku.title}}</a>
+								<p class="cgood-desc-ts-sku">
+									{{good.sku.skuAttributes[0].key}} :
+									{{good.sku.skuAttributes[0].value}} ;
+									{{good.sku.skuAttributes[1].key}} :
+									{{good.sku.skuAttributes[1].value}} ;</p>
+								<p class="cgood-pc-price">
+									￥
+									<span class="cgood-pc-price-now" v-if="good.sku.nowprice%100==0">{{good.sku.nowprice/100+'.00'}}</span>
+									<span class="cgood-pc-price-now" v-else-if="good.sku.nowprice%10==0">{{good.sku.nowprice/100+'0'}}</span>
+									<span class="cgood-pc-price-now" v-else>{{good.sku.nowprice/100}}</span>
+									<span v-if="good.sku.price!=good.sku.nowprice">
+										<span class="cgood-pc-price-origin" v-if="good.sku.price%100==0"> ￥ {{good.sku.price/100+'.00'}}</span>
+										<span class="cgood-pc-price-origin" v-else-if="good.sku.price%10==0"> ￥ {{good.sku.price/100+'0'}}</span>
+										<span class="cgood-pc-price-origin" v-else> ￥ {{good.sku.price/100}}</span>
+									</span>	
+									<span class="cgood-pc-count">x{{good.number}}</span>
+								</p>
+							</div>
 						</div>
-					</div>
+					</div>	
+				</div>
+				<div class="checkout-normal">
+					
 				</div>
 			</div>
 			<div class="shopcar-empty">
@@ -54,7 +73,6 @@ export default{
 			arr1:[]
 		}
 	},
-	
 	mounted(){
 		this.$http.get('static/cs.json').then(function(res){
 			this.arr1 = res.data.result.shopGroup;
@@ -64,6 +82,11 @@ export default{
 				$(".shopcar-empty").hide()
 			}
 			console.log(res.data.result.shopGroup)
+		}),
+		this.$http.jsonp('http://m.mogujie.com/api/cart/cartList?marketType=market_mogujie').then(function(res){
+			console.log(res)
+		},function(res){
+			console.log(res)
 		})
 	}
 }
@@ -88,13 +111,19 @@ export default{
 /*购物车列表*/
 .shop{border-top: 1px solid #d8d8d8;border-bottom: 1px solid #d8d8d8;margin-top: .13rem;}
 .shop-name{padding: .07rem .13rem;font-size: .12rem;border-bottom: 1px solid #E5E5E5;}
+.shop-logo{width: .21rem;display: inline-block;vertical-align: middle;}
+.shop-coupon{float: right;}
 .shop-checkbox{display: inline-block;width: .17rem;height: .17rem;background: url(../assets/checkbox.png) 0 100% no-repeat;background-size: .17rem;margin-right: .05rem;vertical-align: middle;}
 .goods{padding: .09rem;position: relative;}
+.goods>div{padding-top: .04rem;}
 .good-checkbox{width: .17rem;height: .17rem;background: url(../assets/checkbox.png) 0 100% no-repeat;background-size: .17rem;position: absolute;}
 .cartgood{padding-left: .34rem;}
 .cartgood-pic{width: .55rem;height: .82rem;float: left;}
 .cartgood-pic>img{width: 100%;}
 .cgood-desc{padding-left: .68rem;}
 .cgood-desc-ts-title{color: #5e5e5e;font-size: .12rem;font-weight: bold;line-height: .18rem;}
-.cgood-desc-ts-sku{height: .34rem;color: #999;}
+.cgood-desc-ts-sku{height: .3rem;color: #999;}
+.cgood-pc-price{font-size: .14rem;}
+.cgood-pc-price-origin{color: #999;font-size: .12rem;text-decoration: line-through;}
+.cgood-pc-count{float: right;color: #999;font-size: .12rem;}
 </style>
