@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div id="title">
+    <div id="title-login">
       <p><i class="iconfont">&#xe602;</i></p>
       <p>登录</p>
       <p>忘记密码</p>
@@ -9,21 +9,23 @@
         <div class="account">
           <p>蘑菇街账号</p>
           <input type="text" placeholder="输入用户名/邮箱/手机" v-model.trim="number" v-verify="number">
+          <br>
           <label v-verified="verifyError.number"></label>
         </div>
         <div class="account">
           <p>密码</p>
           <input type="password" placeholder="输入密码" v-model.trim="pwd">
+          <br>
           <label v-verified="verifyError.pwd"></label>
         </div>
     </div>
     <div id="enter">
-      <button @click="submit">登录</button>
+      <p @click="submit">登  录</p>
     </div>
     <!--<div>{{$verify.$errorArray}}</div>-->
     <div id="enter-sort">
       <p><a href="">免密登录</a></p>
-      <p><a href="">注册账号</a></p>
+      <router-link to="/signIn"><p class="zc">注册账号</p></router-link>
     </div>
     <div id="qq">
       <div id="include">
@@ -65,11 +67,26 @@
     methods: {
           submit:function () {
               console.log(this.$verify.check());
-              //验证正确跳转
-              if(this.$verify.check()==true){
-                localStorage.storage=true;
-                this.$router.push('/mine');
+            var user = JSON.parse(localStorage.getItem('user'));
+            console.log(user,user[0].inputInfo);
+
+            //验证正确跳转
+            for(var i=0; i<user.length; i++){
+              if(this.number==user[i].inputInfo){
+                var idx = i;
+                break;
               }
+            }
+//            console.log(idx)
+            if(this.number==user[idx].inputInfo && this.pwd==user[idx].inputInfo2){
+              localStorage.storage=true;
+              this.$router.push('/mine');
+            }else{
+              alert('账号错误');
+            }
+
+
+
           }
       },
     }
@@ -89,14 +106,14 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;}
-  #title{width:3.2rem;
-    height:0.6rem;
+  #title-login{width:3.2rem;
+    height:0.4rem;
     background:#fafafa;
     border-bottom:1px solid #c9c7c8;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    line-height:0.6rem;
+
+    line-height:0.4rem;
   }
   #info{
     width:3.2rem;
@@ -123,10 +140,13 @@
     text-align: center;
     line-height: 0.42rem;
     margin:0.2rem 0.14rem;}
+  #enter p{color:#fff;}
   #enter-sort{display: flex; justify-content: space-between; padding:0 0.14rem;}
   #enter-sort>p:last-child a{color:red;}
   #include a{display: inline-block;}
   #qq{width:3.2rem;height:0.9rem;text-align:center;display:flex;justify-content: center;}
   #include{background:#0598e2;width:0.9rem;height:0.9rem;border-radius:50%;padding:0.2rem 0;margin-top:0.8rem;}
   #qq p i{color:#fff;font-size:0.2rem;}
+  .zc{color:red;}
+  label{width:3.2rem;height:0.1rem;}
 </style>

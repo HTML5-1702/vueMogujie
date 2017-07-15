@@ -15,6 +15,7 @@
       </router-link>
     </div>
     <div id="indent-list">
+      <router-link to='/indent'>
       <ul>
         <li>
           <p><i class="iconfont">&#xe634;</i></p>
@@ -33,11 +34,16 @@
           <p><a href="">售后</a></p>
         </li>
       </ul>
+      </router-link>
     </div>
     <div id="list2">
       <ul>
-        <li><span><i class="iconfont">&#xe600;</i></span><p>我的购物车<a href="">></a></p></li>
-        <li><span><i class="iconfont">&#xe64d;</i></span><p>我的拼团<a href="">></a></p></li>
+        <router-link to="/shopcar"></router-link><li><span><i class="iconfont">&#xe600;</i></span><p>我的购物车<a href="">></a></p></li>
+        <router-link to="/group">
+        <li><span>
+          <i class="iconfont">&#xe64d;</i></span><p>我的拼团<a href="">></a></p>
+        </li>
+        </router-link>
         <li><span><i class="iconfont">&#xe63b;</i></span><p>我的优惠券<a href="">></a></p></li>
         <li><span><i class="iconfont">&#xe60f;</i></span><p>我收藏的商品<a href="">></a></p></li>
         <li><span><i class="iconfont">&#xe645;</i></span><p>我收藏的店铺<a href="">></a></p></li>
@@ -49,7 +55,11 @@
         <li><span id="wx"><i class="iconfont">&#xe615;</i></span><p>消息通知</p></li>
       </ul>
     </div>
-
+    <router-link to="/login">
+      <div class="exit">
+          <p>退出登录</p>
+      </div>
+    </router-link>
     <div id="tab">
       <ul>
         <li>
@@ -91,9 +101,8 @@
             if(JSON.parse(localStorage.getItem('storage'))!=true){
                 this.$router.push('/login');
             }
-          localStorage.removeItem('storage')
+//          localStorage.removeItem('storage')
         },
-
     }
 //  })
   }
@@ -118,6 +127,7 @@
     -moz-osx-font-smoothing: grayscale;
     /*padding-left:20px*/
   }
+  #mine{overflow: auto;}
   #title{width:3.2rem;height:0.8rem;background:#fff;padding:0.2rem 0 0 0.18rem;}
   #title>p:first-child{float:left;width:0.4rem;height:0.4rem;border-radius:50%;}
   #title>p>img{width:0.4rem;height:0.4rem;border-radius:50%;}
@@ -142,4 +152,14 @@
   #wx{background:green;}
   #download ul li span i{color:#fff;}
   #download ul li p{float:right;width:2.7rem;height:0.6rem;border-bottom:1px solid #e5e5e5;}
+  .exit{width:3.2rem;height:0.48rem;padding:0.1rem 0.2rem 0 0.2rem;}
+  .exit p{width:2.8rem;height:0.28rem;background:#ff5777;border-radius:5%;text-align: center;line-height:0.28rem;}
+  .exit p{color:#fff;}
+
+
+
+
+
+
+
 </style>
