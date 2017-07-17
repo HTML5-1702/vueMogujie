@@ -74,17 +74,14 @@ export default{
 		}
 	},
 	mounted(){
-		this.$http.get('static/cs.json').then(function(res){
+		this.$http.jsonp('http://m.mogujie.com/api/cart/cartList?marketType=market_mogujie').then(function(res){
 			this.arr1 = res.data.result.shopGroup;
 			if(this.arr1.length==0){
 				$(".shopcar-empty").show()
 			}else{
 				$(".shopcar-empty").hide()
 			}
-			console.log(res.data.result.shopGroup)
-		}),
-		this.$http.jsonp('http://m.mogujie.com/api/cart/cartList?marketType=market_mogujie').then(function(res){
-			console.log(res)
+			console.log(res.body.result.shopGroup)
 		},function(res){
 			console.log(res)
 		})
