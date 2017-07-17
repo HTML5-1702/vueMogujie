@@ -1,13 +1,4 @@
 <template>
-<<<<<<< HEAD
-	<div id="searchlist">搜索列表页</div>
-</template>
-
-<script>
-</script>
-
-<style>
-=======
 	<div id="searchlist">
 		<div class="categoryListTop">
 			<a class="search-return" href="javascript:void(history.back())"></a>
@@ -93,5 +84,4 @@ export default {
 .categoryListViews .bot_box{padding: 0 .07rem; line-height: .18rem;}
 .categoryListViews .bot_box .p_price{float: left; color: #333; font-size: .14rem; font-weight: bold;}
 .categoryListViews .bot_box .p_feed{float: right; color: #999; padding-right: .13rem; background: url(../assets/p_feed.png) no-repeat right center; background-size: auto 65%;}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>

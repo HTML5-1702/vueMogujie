@@ -1,5 +1,5 @@
 <template>
-<<<<<<< HEAD
+
 	<div id="home" >
 		<div class="search">
             <a class="im-talk" href="javascript:;"></a>
@@ -9,11 +9,6 @@
             <a class="cart" href="javascript:;"></a>
 		</div>
 		<lunbo :message="swiperData" ></lunbo>
-=======
-	<div id="home">
-		<div id="search"></div>
-		<lunbo :message="swiperData"></lunbo>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 		<!-- 大牌满减-->
 		<div id="home-dapai">
 			<div v-for="item in dapaiData">
@@ -30,7 +25,6 @@
 				<span>{{title}}</span><span class="yuandian"></span><span>{{title2}}</span>
 			</div>
 			<div class="daojishi-right">
-<<<<<<< HEAD
 				<span>{{hours}}</span> : <span>{{minutes}}</span> : <span>{{seconds}}</span>
 				<img src="https://s10.mogucdn.com/p1/160719/upload_ifrwkntcmi4diolehezdambqhayde_84x20.png" alt="" />
 			</div>
@@ -101,20 +95,11 @@
 	    </div>
 	    <div class="biaochi">下拉加载更多</div>
 <!----------底部--------------------->
-		<div id="tab">
-	    	<ul>
-	    		<li class="active">
-	    			<router-link to="/home"r>
-=======
-				<span></span> : <span></span> : <span></span>
-			</div>
-			
-		</div>
+
 		<div id="tab">
 	    	<ul>
 	    		<li class="active">
 	    			<router-link to="/home">
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 	    				<div class="img-wrap"></div>
 	    				<div class="title active">首页</div>
 	    			</router-link>
@@ -144,7 +129,6 @@
 
 <script>
 	import lunbo from '../views/lunbo'
-<<<<<<< HEAD
 	import lunboMiddle from '../views/lunboMiddle'
 
 	export default{
@@ -168,10 +152,6 @@
 					self.seconds = parseInt(time % 60);
 					if(self.seconds < 10) {
 						self.seconds = '0' + self.seconds;
-//						if(self.seconds == 0 || self.seconds < 0){
-//							self.seconds=0;
-//							self.seconds = '0' + self.seconds;
-//						}
 					};
 					if(self.minutes < 10) {
 						self.minutes = "0" + self.minutes;
@@ -209,42 +189,13 @@
 				this.$router.push('/search');
 			}
 		},
+
 		mounted(){
 			this.page=1;
-=======
-	
-	export default{
-		components:{
-			lunbo
-		},
-		data(){
-			return {swiperData:[],dapaiData:[]}
-		},
-		methods:{
-//			timer : setInterval( function() {
-//					this.time--;
-//					this.minutes = parseInt(time / 60 % 60);
-//					this.hours = parseInt(time / 60 / 60 % 24);
-//					this.seconds = parseInt(this.time % 60);
-//					if(this.seconds < 10) {
-//						this.seconds = '0' + this.seconds;
-//					};
-//					if(this.minutes < 10) {
-//						this.minutes = "0" + this.minutes;
-//					};
-//					if(this.hours < 10) {
-//						this.hours = '0' + this.hours;
-//					};
-//				}, 1000)
-			
-		},
-		mounted(){
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 			this.$http.jsonp('http://mce.mogucdn.com/jsonp/multiget/3?pids=51822%2C51827%2C41119%2C51833%2C51836%2C4604').then(function (res){
 	       		this.swiperData = res.data.data[51822].list;
 	       		this.dapaiData = res.data.data[51827].list;
 	       		this.seckill = res.data.data[41119].list;
-<<<<<<< HEAD
 	       		this.goods = res.data.data[41119].list[0].list;
 	       		this.cuxiao = res.data.data[51833].list;
 	       		this.hotMarket = res.data.data[51836].list;
@@ -274,34 +225,22 @@
 		        		sef.page++;
 		        		sef.getData(sef.page);
 		       	 	}
-			 	}
-		      }); 
+			 	};
+		      })
 	
-=======
-	       	    this.time=this.seckill[0].time;
-	       	    this.title=this.seckill[0].title;
-	       	    this.title2=this.seckill[0].viceTitle;
-	       		console.log(this.seckill)
-			})
-//			this.timer();
-			
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 		}
-	}
+		}
+			
 </script>
 
 <style>
 	#home{background: #f1f1f1;}
-<<<<<<< HEAD
 	.search{width: 100%; height: .4rem; padding: .064rem .043rem; border-bottom: 1px solid #e5e5e5; overflow: hidden; background: #fff;}
 	.search form{overflow: hidden; float: left;}
 	.search input{border: none; width: 2.26rem; height: .26rem; line-height: .26rem; padding-left: .256rem; background: #eee url(../assets/top_icon2.png) no-repeat .07rem center; background-size: auto 55%; border-radius: .02rem;}
 	.search .im-talk,.search .cart{display: block; width: .427rem; height: .26rem; float: left; background-repeat: no-repeat; background-position: center; background-size: auto 68%;}
 	.search .im-talk{background-image: url(../assets/top_icon1.png);}
 	.search .cart{background-image: url(../assets/shopcar_icon.png);}
-=======
-	#search{width: 100%;height: 0.4rem;padding: 0.08rem;background: red;}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 	#home-dapai{width: 100%;background: #fff;padding:0.05rem 0;overflow: hidden;}
 	#home-dapai>div{width: 33%;float: left;position: relative;}
 	
@@ -315,7 +254,6 @@
 	.yuandian{display: inline-block;width: 0.05rem;height: 0.05rem;background: #000;border-radius: 50%;margin: 0.05rem 0.05rem;}
 	.daojishi-left{float: left;}
 	.daojishi-right{float: left;margin: 0 0 0 0.1rem;}
-<<<<<<< HEAD
 	.daojishi-right span{display: inline-block;width: 0.2rem;height:0.2rem;line-height: 0.2rem; background: #000;vertical-align: middle;border-radius:0.03rem ;color: #fff;text-align: center;}
 	.daojishi-left span{font-size: 0.15rem}
 	.daojishi-right img{width: 0.44rem;float: right;margin: 0.1rem 0 0 0.4rem;}
@@ -356,8 +294,6 @@
 	.guessBoxBottom-bottom p:nth-child(1){width: 50%;float: left;font-weight: 800;}
 	.guessBoxBottom-bottom p:nth-child(2){width: 40%; float: left;text-align: center;margin: 0.02rem 0 0 0;color: #999;background:url(../assets/star.png) no-repeat;background-size: 0.1rem;background-position: right center;padding-bottom: 0.03rem;}
 	.biaochi{width: 100%;font-size: 0.1rem;text-align: center;}
-=======
 	.daojishi-right span{display: inline-block;width: 0.2rem;height:0.2rem;background: #000;vertical-align: middle;border-radius:0.03rem ;color: #fff;}
 	.daojishi-left span{font-size: 0.15rem}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>

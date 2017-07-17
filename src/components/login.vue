@@ -1,35 +1,11 @@
 <template>
-<<<<<<< HEAD
-  <div id="login">
-    <div id="title">
-=======
   <div class="login">
     <div id="title-login">
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
       <p><i class="iconfont">&#xe602;</i></p>
       <p>登录</p>
       <p>忘记密码</p>
     </div>
     <div id="info">
-<<<<<<< HEAD
-
-        <div class="account">
-          <p>蘑菇街账号</p>
-          <input type="text" placeholder="输入用户名/邮箱/手机">
-        </div>
-        <div class="account">
-          <p>密码</p>
-          <input type="password" placeholder="输入密码">
-        </div>
-
-    </div>
-    <div id="enter">
-      <input type="submit" @click="enterIn" value="登录">
-    </div>
-    <div id="enter-sort">
-      <p><a href="">免密登录</a></p>
-      <p><a href="">注册账号</a></p>
-=======
         <div class="account">
           <p>蘑菇街账号</p>
           <input type="text" placeholder="输入用户名/邮箱/手机" v-model.trim="number" v-verify="number">
@@ -50,16 +26,11 @@
     <div id="enter-sort">
       <p><a href="">免密登录</a></p>
       <router-link to="/signIn"><p class="zc">注册账号</p></router-link>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
     </div>
     <div id="qq">
       <div id="include">
         <a href="">
-<<<<<<< HEAD
-          <p> <i class="iconfont">&#xe61a;</i> </p>
-=======
           <p><i class="iconfont">&#xe61a;</i></p>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
           <p>QQ登录</p>
         </a>
       </div>
@@ -68,18 +39,6 @@
 </template>
 <script>
   export default{
-<<<<<<< HEAD
-
-    methods: {
-      enterIn: function(){
-       if(localStorage.storage=true){
-         this.$router.push('/mine');
-       }
-        alert('恭喜您注册成功！');
-      }
-    }
-  }
-=======
       name:'login',
       data(){
          return {
@@ -131,7 +90,6 @@
           }
       },
     }
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -148,23 +106,14 @@
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;}
-<<<<<<< HEAD
-  #title{width:3.2rem;
-    height:0.37rem;
-=======
   #title-login{width:3.2rem;
     height:0.4rem;
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
     background:#fafafa;
     border-bottom:1px solid #c9c7c8;
     display: flex;
     justify-content: space-between;
-<<<<<<< HEAD
-    align-items: center;
-=======
 
     line-height:0.4rem;
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
   }
   #info{
     width:3.2rem;
@@ -191,19 +140,13 @@
     text-align: center;
     line-height: 0.42rem;
     margin:0.2rem 0.14rem;}
-<<<<<<< HEAD
-=======
   #enter p{color:#fff;}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
   #enter-sort{display: flex; justify-content: space-between; padding:0 0.14rem;}
   #enter-sort>p:last-child a{color:red;}
   #include a{display: inline-block;}
   #qq{width:3.2rem;height:0.9rem;text-align:center;display:flex;justify-content: center;}
   #include{background:#0598e2;width:0.9rem;height:0.9rem;border-radius:50%;padding:0.2rem 0;margin-top:0.8rem;}
   #qq p i{color:#fff;font-size:0.2rem;}
-<<<<<<< HEAD
-=======
   .zc{color:red;}
   label{width:3.2rem;height:0.1rem;}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>
