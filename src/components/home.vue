@@ -130,7 +130,6 @@
 <script>
 	import lunbo from '../views/lunbo'
 	import lunboMiddle from '../views/lunboMiddle'
-
 	export default{
 		components:{
 			lunbo,lunboMiddle
@@ -152,19 +151,22 @@
 					self.seconds = parseInt(time % 60);
 					if(self.seconds < 10) {
 						self.seconds = '0' + self.seconds;
+						if(self.seconds == 0){
+							self.seconds="00";
+						}
 					};
 					if(self.minutes < 10) {
 						self.minutes = "0" + self.minutes;
 						if(self.minutes == 0){
-							self.minutes=0;
-							self.minutes = '0' + self.minutes;
+							self.minutes="00";
+//							self.minutes = '0' + self.minutes;
 						}
 					};
 					if(self.hours < 10) {
 						self.hours = '0' + self.hours;
 						if(self.hours == 0){
-							self.hours=0;
-							self.hours = '0' + self.hours;
+							self.hours="00";
+//							self.hours = '0' + self.hours;
 						}
 					};
 				}, 1000)

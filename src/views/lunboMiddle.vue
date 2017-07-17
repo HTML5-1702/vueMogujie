@@ -46,7 +46,7 @@
 
 </script>
 <style>
-.title{color: #666;font-size: 0.1rem;margin: 0.08rem 0 0 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+#lunboMiddle .title{color: #666;font-size: 0.1rem;margin: 0.08rem 0 0 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .img{width: 0.6rem;margin: 0 auto}
 .salePrice{font-size: 0.1rem;color: #F25;}
 .price{padding-left: 0.1rem;color: #888;font-size: 0.1rem;text-decoration: line-through;}
