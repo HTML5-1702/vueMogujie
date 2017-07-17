@@ -2,14 +2,30 @@
 	<div id="search">
 		<div class="search_head">
 			<a class="search-return" href="javascript:void(history.back())"></a>
+<<<<<<< HEAD
+            <input id="search-input" class="search-input" type="text" name="q" placeholder="露背无袖连衣裙">
+        	<a class="search-btn" href="javascript:;">搜索</a>
+=======
             <input id="search-input" v-model="search_input" class="search-input" type="text" name="q" placeholder="露背无袖连衣裙">
         	<a class="search-btn" href="javascript:;"  @click="searchKey()">搜索</a>
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 		</div>
 		<div class="search_content">
 			<div class="search_history">
 				<div class="top">
 					<i></i>
 					<span>历史搜索</span>
+<<<<<<< HEAD
+					<a href="javascript:;"></a>
+				</div>
+				<div class="bottom">
+					<ul>
+						<li>
+							<a href="javascript:;">露背无袖连衣裙</a>
+						</li>
+					</ul>
+					<div class="tip">暂无历史搜索</div>
+=======
 					<a href="javascript:;" @click="deleteSearch()"></a>
 				</div>
 				<div class="bottom">
@@ -19,6 +35,7 @@
 						</li>
 					</ul>
 					<div class="tip" v-show="!searchRecord">暂无历史搜索</div>
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 				</div>
 			</div>
 			<div class="search_hotwords">
@@ -27,8 +44,13 @@
 				</div>
 				<div class="bottom">
 					<ul>
+<<<<<<< HEAD
+						<li>
+							<a href="javascript:;">夏凉节</a>
+=======
 						<li v-for="(value,key) in searchRecordHot" v-if="value>0" v-bind:class="{search_hot:value>3}" @click="recordKey(key)">
 							<a href="javascript:;">{{key}}</a>
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 						</li>
 					</ul>
 				</div>
@@ -38,6 +60,8 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
 //	localStorage.removeItem('searchRecord');
 //	localStorage.removeItem('searchRecordHot');
 export default {
@@ -106,6 +130,7 @@ export default {
 		}
 	}
 }
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </script>
 
 <style>
@@ -125,6 +150,10 @@ export default {
 .search_history .bottom .tip{margin: .08rem 0 0 .15rem;}
 .search_hotwords{padding: .08rem;}
 .search_hotwords .top span{padding-left: .13rem; background: url(../assets/p_feed.png) no-repeat left center; background-size: auto 75%;}
+<<<<<<< HEAD
+.search_history .bottom li.hot a{color: #ff4466;}
+=======
 .search_hotwords .bottom ul{overflow: hidden;}
 .search_hotwords .bottom li.search_hot a{color: #ff4466;}
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>

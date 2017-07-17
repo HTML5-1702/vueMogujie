@@ -18,24 +18,13 @@ import Search from './components/search'
 import SearchList from './components/searchlist'
 import CategoryList from './components/categorylist'
 import detailCate from './components/detailCate'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import Indent from './components/indent'
-import verify from "vue-verify-plugin"
-import SignIn from './components/signIn'
-import Group from './components/group'
-import Search from './components/search'
-import SearchList from './components/searchlist'
-import CategoryList from './components/categorylist'
 
 Vue.config.productionTip = false;
 
 //安装
-Vue.use(VueRouter);
-Vue.use(VueResource);
-Vue.use(VueAwesomeSwiper);
-Vue.use(ElementUI);
-Vue.use(verify);
+Vue.use(VueRouter)
+Vue.use(VueResource)
+Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: 'dist/error.png',
@@ -51,10 +40,6 @@ const routes = [
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
 	{path : '/mine' , component : Mine},
   {path : '/login',component:Login},
-  {path:'/login',component:Login},
-  {path:'/indent',component:Indent},
-  {path:'/signIn',component:SignIn},
-  {path:'/group',component:Group},
 	{path : '/search' , component : Search},
 	{path : '/searchlist' , component : SearchList},
 	{path : '/categorylist' , component : CategoryList},
@@ -64,7 +49,8 @@ const routes = [
 //创建路由对象
 const router = new VueRouter({
 	routes
-});
+})
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<App/>',

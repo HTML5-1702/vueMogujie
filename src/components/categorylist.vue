@@ -26,8 +26,13 @@
 								<span v-for="(j,index) in i.props">{{j}}</span>
 							</div>
 							<div class="bot_box">
+<<<<<<< HEAD
+								<p class="p_price fl" lang="en">{{i.price}}</p>
+								<p class="p_feed fr">{{i.sale}}</p>
+=======
 								<p class="p_price">{{i.price}}</p>
 								<p class="p_feed">{{i.sale}}</p>
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 							</div>
 						</div>
 					</div>
@@ -47,16 +52,25 @@ export default {
 	},
 	mounted: function() {
 		//左边分类
+<<<<<<< HEAD
+//		console.log(decodeURI(this.$route.query.id))
+=======
 		console.log(decodeURI(this.$route.query.id))
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 		this.categoryTitle = decodeURI(this.$route.query.id).match(/[a-zA-Z\u4e00-\u9fa5]+&/)[0].split('&')[0];
 	    this.$http.jsonp('http://list.mogujie.com/search?_version=61&ad=2&fcid='+this.$route.query.id.split('?fcid=')[1])
 	    .then(function(res) {
 	        this.categoryListData = res.body.result.wall.list;
+<<<<<<< HEAD
+	        console.log(res.body.result.wall.list)
+	    })
+=======
 	        console.log(res)
 	    })
 	},
 	searchFocus:function(){
 		this.$router.push('/search');
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 	}
 }
 </script>
@@ -72,6 +86,9 @@ export default {
 .categoryListSort a span{display: block; width: 100%; height: .14rem; line-height: .14rem; border-left: 1px solid #e6e6e6; text-align: center; margin-top: .09rem;}
 .categoryListSort a:first-child span{border: none;}
 .categoryListViews{position: absolute; top: 0.79rem; right: 0; bottom: 0; left: 0; background: #F6F6F6; overflow-y: scroll; padding: 0 .03rem;}
+<<<<<<< HEAD
+.categoryListViews li{width: 50%; height: 2.7rem; padding: .06rem .03rem 0 .03rem; float: left;}
+=======
 .categoryListViews ul{overflow: hidden;}
 .categoryListViews li{width: 50%; /*height: 2.7rem;*/ padding: .06rem .03rem 0 .03rem; float: left;}
 .categoryListViews li .styles1,.categoryListViews li .styles2{width: 100%; height: 2.68rem; border-radius: .03rem; overflow: hidden; background: #fff;}
@@ -82,4 +99,5 @@ export default {
 .categoryListViews .bot_box{padding: 0 .07rem; line-height: .18rem;}
 .categoryListViews .bot_box .p_price{float: left; color: #333; font-size: .14rem; font-weight: bold;}
 .categoryListViews .bot_box .p_feed{float: right; color: #999; padding-right: .13rem; background: url(../assets/p_feed.png) no-repeat right center; background-size: auto 65%;}
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>
