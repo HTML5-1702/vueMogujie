@@ -20,6 +20,10 @@ import Indent from './components/indent'
 import verify from "vue-verify-plugin"
 import SignIn from './components/signIn'
 import Group from './components/group'
+import Search from './components/search'
+import SearchList from './components/searchlist'
+import CategoryList from './components/categorylist'
+
 Vue.config.productionTip = false;
 
 //安装
@@ -28,18 +32,6 @@ Vue.use(VueResource);
 Vue.use(VueAwesomeSwiper);
 Vue.use(ElementUI);
 Vue.use(verify);
-
-import Search from './components/search'
-import SearchList from './components/searchlist'
-import CategoryList from './components/categorylist'
-
-
-Vue.config.productionTip = false;
-
-//安装
-Vue.use(VueRouter)
-Vue.use(VueResource)
-Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: 'dist/error.png',
