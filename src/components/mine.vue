@@ -156,10 +156,4 @@
   .exit p{width:2.8rem;height:0.28rem;background:#ff5777;border-radius:5%;text-align: center;line-height:0.28rem;}
   .exit p{color:#fff;}
 
-
-
-
-
-
-
 </style>

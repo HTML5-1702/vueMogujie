@@ -180,11 +180,4 @@ $(function(){
 .category_ul{overflow: hidden;}
 .category_ul li{width: 1.14rem; margin: .05rem 0 0 .05rem; float: left; border-radius: .03rem; overflow: hidden;}
 .category_ul li .goods_img{position: relative; width: 100%; height: 1.71rem; overflow: hidden;}
-.category_ul li .bo_pv{position: absolute; width: 100%; height: .22rem; line-height: .22rem; left: 0; bottom: .04rem; color: #fff; padding-left: .085rem; background: rgba(0,0,0,.4);}
-.category_ul .goods_info{width: 100%; padding: .04rem .05rem;}
-.category_ul .goods_info .goods_name{width: 100%; line-height: .13rem; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
-.category_ul .goods_info .bot_box{height: .2rem;}
-.category_ul .goods_info .p_price,.category_ul .goods_info .p_feed{height: .16rem; line-height: .16rem; margin-top: .03rem;}
-.category_ul .goods_info .p_price{color: #FF5777; float: left; font-size: .14rem; font-weight: bold;}
-.category_ul .goods_info .p_feed{color: #999; float: right; padding-right: .13rem; background: url(../assets/p_feed.png) no-repeat right center; background-size: auto 65%;}
-</style>
+.category_ul li .bo_pv{position: absolute; width: 100%; height: .22rem;
