@@ -34,6 +34,7 @@
 					</div>
 					<ul class="category_ul">
 						<li v-for="i in categoryList">
+<<<<<<< HEAD
 							<div class="goods_img">
 					            <img class="J_dynamic_img fill_img" v-bind:src="i.img"/>
 					            <div class="bo_pv">已售{{i.sale}}件</div>
@@ -45,6 +46,21 @@
 	                                <p class="p_feed">{{i.cfav}}</p>
 	                           </div>
        						</div>
+=======
+							<!--<router-link :to="{name:'goodnormal',params:{id:good.sku.itemIdEsc}}">-->
+								<div class="goods_img">
+						            <img class="J_dynamic_img fill_img" v-bind:src="i.img"/>
+						            <div class="bo_pv">已售{{i.sale}}件</div>
+								</div>
+	        					<div class="goods_info">
+	        						<p class="goods_name">{{i.title}}</p>
+		           					<div class="bot_box clearfix">
+		                				<p class="p_price">￥{{i.price}}</p>
+		                                <p class="p_feed">{{i.cfav}}</p>
+		                           </div>
+	       						</div>
+	       					<!--</router-link>-->
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 						</li>
 					</ul>
 				</div>
@@ -108,6 +124,10 @@ export default {
 	    this.$http.jsonp('https://list.mogujie.com/search?cKey=h5-cube&fcid=10062603')
 	    .then(function(res) {
 	        this.categoryList = JSON.parse(res.bodyText).result.wall.docs;
+<<<<<<< HEAD
+=======
+	        console.log(this.categoryList)
+>>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 	    });
 		$('.categoryLeft,.categoryRight').css('height',$(window).height()-$('.search').outerHeight()-$('#tab').outerHeight());
 	},
