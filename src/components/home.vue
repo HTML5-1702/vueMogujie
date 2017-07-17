@@ -79,7 +79,9 @@
 	    <div class="guess">
 	    	<div class="guessTitle">{{caiNiXihuanTitle}}</div>
 	    	<div class="guessBox">
-	    		<a href="javascript:;" v-for="item in caiNiXihuan" >
+	    		<ul>
+	    		<li href="javascript:;" v-for="item in caiNiXihuan" >
+	    			<router-link :to = "{name:'goodnormal',params:{id:item.iid}}">
 	    			<img :src="item.img"/>
 	    			<div class="guessBoxBottom">
 	    				<div class="guessBoxBottom-top">
@@ -90,7 +92,9 @@
 	    					<p class="p_feed">{{item.cfav}}</p>
 	    				</div>
 	    			</div>
-	    		</a>
+	    		</router-link>
+	    		</li>
+	    		</ul>
 	    	</div>
 	    </div>
 	    <div class="biaochi">下拉加载更多</div>
@@ -159,14 +163,12 @@
 						self.minutes = "0" + self.minutes;
 						if(self.minutes == 0){
 							self.minutes="00";
-//							self.minutes = '0' + self.minutes;
 						}
 					};
 					if(self.hours < 10) {
 						self.hours = '0' + self.hours;
 						if(self.hours == 0){
 							self.hours="00";
-//							self.hours = '0' + self.hours;
 						}
 					};
 				}, 1000)
@@ -190,6 +192,7 @@
 			searchFocus:function(){
 				this.$router.push('/search');
 			}
+			
 		},
 
 		mounted(){
@@ -293,8 +296,8 @@
 	.guessBoxBottom-top{width: 100%;height: 70%;padding: 0.02rem;overflow: hidden;white-space: normal;text-overflow: ellipsis;}
 	.guessBoxBottom-top span{ display: inline-block;margin:0.01rem 0.02rem;font-size: .05rem;height: 0.1rem;line-height: 0.1rem; background: #eff3f6;color: #5a6f7a;}
 	.guessBoxBottom-bottom{width: 100%;height: 30%;padding:0.03rem 0 0 0.03rem ;}
-	.guessBoxBottom-bottom p:nth-child(1){width: 50%;float: left;font-weight: 800;}
-	.guessBoxBottom-bottom p:nth-child(2){width: 40%; float: left;text-align: center;margin: 0.02rem 0 0 0;color: #999;background:url(../assets/star.png) no-repeat;background-size: 0.1rem;background-position: right center;padding-bottom: 0.03rem;}
+	.guessBoxBottom-bottom p:nth-child(1){float: left;font-weight: 800;margin: 0 0 0 0.05rem;line-height: 0.17rem}
+	.guessBoxBottom-bottom p:nth-child(2){float: right;text-align: center;margin: 0.02rem 0 0 0;color: #999;background:url(../assets/star.png) no-repeat;background-size: auto 65%;background-position: right;padding:0 0.11rem 0 0;margin: 0 0.1rem 0 0;line-height: 0.17rem;}
 	.biaochi{width: 100%;font-size: 0.1rem;text-align: center;}
 	.daojishi-right span{display: inline-block;width: 0.2rem;height:0.2rem;background: #000;vertical-align: middle;border-radius:0.03rem ;color: #fff;}
 	.daojishi-left span{font-size: 0.15rem}
