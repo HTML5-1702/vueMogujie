@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -14,10 +12,6 @@ import Shopcar from './components/shopcar'
 import Mine from './components/mine'
 import GoodNormal from './components/Good-normal'
 import Login from './components/login'
-import Search from './components/search'
-import SearchList from './components/searchlist'
-import CategoryList from './components/categorylist'
-import detailCate from './components/detailCate'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import Indent from './components/indent'
@@ -50,24 +44,22 @@ const routes = [
 	{path : '/shopcar' , component : Shopcar},
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
 	{path : '/mine' , component : Mine},
-  {path : '/login',component:Login},
   {path:'/login',component:Login},
   {path:'/indent',component:Indent},
   {path:'/signIn',component:SignIn},
   {path:'/group',component:Group},
 	{path : '/search' , component : Search},
 	{path : '/searchlist' , component : SearchList},
-	{path : '/categorylist' , component : CategoryList},
-	{path : '/detailCate' , component : detailCate}
+	{path : '/categorylist' , component : CategoryList}
 ];
-
 //创建路由对象
 const router = new VueRouter({
 	routes
 });
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
   router
-})
+});

@@ -13,10 +13,8 @@
 	  },
 	  methods:{
 	      
-      }
-	  },
-	  methods:{
 	  }
+	
 	}
 	window.onload = function(){
 		//REM布局
@@ -57,7 +55,6 @@ html{font-size: 100px;}
 #tab li.active:nth-child(3) .img-wrap{background-image: url(assets/shopcar_icon2.png);}
 #tab li.active:nth-child(4) .img-wrap{background-image: url(assets/mine_icon2.png);}
 #tab li.active a{color: #FF5777;}
-<<<<<<< HEAD
 #home,#category,#shopcar,#mine{position: absolute; top: 0; right: 0; bottom: 0.41rem; left: 0; /*padding-bottom: .41rem;*/ overflow-y: scroll;}
-/*#home,#category,#shopcar,#mine{position: absolute; top: 0; right: 0; bottom: 0; left: 0; padding-bottom: .41rem; overflow-y: scroll;}*/
+
 </style>

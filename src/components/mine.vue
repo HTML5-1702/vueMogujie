@@ -8,13 +8,6 @@
       </div>
     </div>
     <div id="indent">
-<<<<<<< HEAD
-      <p>
-        <span id="pic"><i class="iconfont">&#xe692;</i></span><span><a href="">我的订单</a></span></p>
-      <p><a href="">></a></p>
-    </div>
-    <div id="indent-list">
-=======
       <router-link to='/indent'>
       <p>
         <span id="pic"><i class="iconfont">&#xe692;</i></span><span><a href="">我的订单</a></span></p>
@@ -23,7 +16,6 @@
     </div>
     <div id="indent-list">
       <router-link to='/indent'>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
       <ul>
         <li>
           <p><i class="iconfont">&#xe634;</i></p>
@@ -42,13 +34,6 @@
           <p><a href="">售后</a></p>
         </li>
       </ul>
-<<<<<<< HEAD
-    </div>
-    <div id="list2">
-      <ul>
-        <li><span><i class="iconfont">&#xe600;</i></span><p>我的购物车<a href="">></a></p></li>
-        <li><span><i class="iconfont">&#xe64d;</i></span><p>我的拼团<a href="">></a></p></li>
-=======
       </router-link>
     </div>
     <div id="list2">
@@ -59,7 +44,6 @@
           <i class="iconfont">&#xe64d;</i></span><p>我的拼团<a href="">></a></p>
         </li>
         </router-link>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
         <li><span><i class="iconfont">&#xe63b;</i></span><p>我的优惠券<a href="">></a></p></li>
         <li><span><i class="iconfont">&#xe60f;</i></span><p>我收藏的商品<a href="">></a></p></li>
         <li><span><i class="iconfont">&#xe645;</i></span><p>我收藏的店铺<a href="">></a></p></li>
@@ -71,15 +55,11 @@
         <li><span id="wx"><i class="iconfont">&#xe615;</i></span><p>消息通知</p></li>
       </ul>
     </div>
-<<<<<<< HEAD
-
-=======
     <router-link to="/login">
       <div class="exit">
           <p>退出登录</p>
       </div>
     </router-link>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
     <div id="tab">
       <ul>
         <li>
@@ -103,11 +83,7 @@
         <li class="active">
           <router-link to="/mine">
             <div class="img-wrap"></div>
-<<<<<<< HEAD
-            <div class="title active">我的</div>
-=======
             <div class="title active" >我的</div>
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
           </router-link>
         </li>
       </ul>
@@ -116,41 +92,17 @@
 </template>
 <script>
   export default{
-<<<<<<< HEAD
-
-//  var app =new Vue({
-//    data:{},
-//    el:"#app",
-//    render:h=> h(App),
-//    router,
-//    store,
-//    watch:{
-//      "route":'checkLogin'
-//    },
-=======
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
     created(){
       this.checkLogin();
     },
     methods:{
         checkLogin(){
-<<<<<<< HEAD
-
-//            if(JSON.parse(localStorage.getItem('storage')!=true)){
-//                this.$router.push('/login');
-//            }
-//            else{
-//                this.$router.push('/mine');
-//            }
-        }
-=======
             //本地存储值为false的情况下，跳转到登录界面
             if(JSON.parse(localStorage.getItem('storage'))!=true){
                 this.$router.push('/login');
             }
 //          localStorage.removeItem('storage')
         },
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
     }
 //  })
   }
@@ -175,10 +127,7 @@
     -moz-osx-font-smoothing: grayscale;
     /*padding-left:20px*/
   }
-<<<<<<< HEAD
-=======
   #mine{overflow: auto;}
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
   #title{width:3.2rem;height:0.8rem;background:#fff;padding:0.2rem 0 0 0.18rem;}
   #title>p:first-child{float:left;width:0.4rem;height:0.4rem;border-radius:50%;}
   #title>p>img{width:0.4rem;height:0.4rem;border-radius:50%;}
@@ -203,17 +152,8 @@
   #wx{background:green;}
   #download ul li span i{color:#fff;}
   #download ul li p{float:right;width:2.7rem;height:0.6rem;border-bottom:1px solid #e5e5e5;}
-<<<<<<< HEAD
-=======
   .exit{width:3.2rem;height:0.48rem;padding:0.1rem 0.2rem 0 0.2rem;}
   .exit p{width:2.8rem;height:0.28rem;background:#ff5777;border-radius:5%;text-align: center;line-height:0.28rem;}
   .exit p{color:#fff;}
 
-
-
-
-
-
-
->>>>>>> 9a9b278d80d38b6a0a9ab48ef5da940273d24437
 </style>
