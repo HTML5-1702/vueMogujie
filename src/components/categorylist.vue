@@ -1,8 +1,8 @@
 <template>
-	<div id="searchlist">
+	<div id="categorylist">
 		<div class="categoryListTop">
 			<a class="search-return" href="javascript:void(history.back())"></a>
-            <input class="search" type="text" name="q" v-model="categoryTitle" @focus="searchFocus()">
+            <p>{{categoryTitle}}</p>
             <a class="cart" href="javascript:;"></a>
 		</div>
 		<div class="categoryListSort">
@@ -27,7 +27,7 @@
 							</div>
 							<div class="bot_box">
 								<p class="p_price">{{i.price}}</p>
-								<p class="p_feed">{{i.cfav}}</p>
+								<p class="p_feed">{{i.sale}}</p>
 							</div>
 						</div>
 					</div>
@@ -47,17 +47,16 @@ export default {
 	},
 	mounted: function() {
 		//左边分类
-		this.categoryTitle = decodeURI(this.$route.query.id);
-	    this.$http.jsonp('http://list.mogujie.com/search?_version=61&q='+ this.categoryTitle +'&cKey=46')
+		console.log(decodeURI(this.$route.query.id))
+		this.categoryTitle = decodeURI(this.$route.query.id).match(/[a-zA-Z\u4e00-\u9fa5]+&/)[0].split('&')[0];
+	    this.$http.jsonp('http://list.mogujie.com/search?_version=61&ad=2&fcid='+this.$route.query.id.split('?fcid=')[1])
 	    .then(function(res) {
-	        this.categoryListData = res.body.result.wall.docs;
+	        this.categoryListData = res.body.result.wall.list;
 	        console.log(res)
 	    })
 	},
-	methods:{
-		searchFocus:function(){
-			this.$router.push('/search');
-		}
+	searchFocus:function(){
+		this.$router.push('/search');
 	}
 }
 </script>
@@ -67,7 +66,6 @@ export default {
 .categoryListTop p{width: 2.2rem; float: left; font-size: .18rem; color: #5e5e5e; font-weight: bold; line-height: .45rem; text-align: center;}
 .categoryListTop .search-return,.categoryListTop .cart{display: block; width: .5rem; height: .45rem; float: left; background-repeat: no-repeat; background-position: center;}
 .categoryListTop .search-return{background-image: url(../assets/search-return.png); background-size: auto 35%;}
-.categoryListTop .search{border: none; width: 2.2rem; height: .26rem; line-height: .26rem; padding-left: .256rem; background: #eee url(../assets/top_icon2.png) no-repeat .07rem center; background-size: auto 55%; border-radius: .02rem; float: left; margin-top: .09rem;}
 .categoryListTop .cart{background-image: url(../assets/shopcar_icon.png); background-size: auto 50%;}
 .categoryListSort{width: 100%; height: .34rem; border-bottom: 1px solid #eaeaea; overflow: hidden;}
 .categoryListSort a{display: block; width: 25%; height: .33rem; float: left;}

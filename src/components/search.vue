@@ -2,23 +2,23 @@
 	<div id="search">
 		<div class="search_head">
 			<a class="search-return" href="javascript:void(history.back())"></a>
-            <input id="search-input" class="search-input" type="text" name="q" placeholder="露背无袖连衣裙">
-        	<a class="search-btn" href="javascript:;">搜索</a>
+            <input id="search-input" v-model="search_input" class="search-input" type="text" name="q" placeholder="露背无袖连衣裙">
+        	<a class="search-btn" href="javascript:;"  @click="searchKey()">搜索</a>
 		</div>
 		<div class="search_content">
 			<div class="search_history">
 				<div class="top">
 					<i></i>
 					<span>历史搜索</span>
-					<a href="javascript:;"></a>
+					<a href="javascript:;" @click="deleteSearch()"></a>
 				</div>
 				<div class="bottom">
 					<ul>
-						<li>
-							<a href="javascript:;">露背无袖连衣裙</a>
+						<li v-for="(value,key) in searchRecord" @click="recordKey(key)">
+							<a href="javascript:;">{{key}}</a>
 						</li>
 					</ul>
-					<div class="tip">暂无历史搜索</div>
+					<div class="tip" v-show="!searchRecord">暂无历史搜索</div>
 				</div>
 			</div>
 			<div class="search_hotwords">
@@ -27,8 +27,8 @@
 				</div>
 				<div class="bottom">
 					<ul>
-						<li>
-							<a href="javascript:;">夏凉节</a>
+						<li v-for="(value,key) in searchRecordHot" v-if="value>0" v-bind:class="{search_hot:value>3}" @click="recordKey(key)">
+							<a href="javascript:;">{{key}}</a>
 						</li>
 					</ul>
 				</div>
@@ -38,6 +38,74 @@
 </template>
 
 <script>
+//	localStorage.removeItem('searchRecord');
+//	localStorage.removeItem('searchRecordHot');
+export default {
+	data () {
+	    return {
+	    	search_input:"",
+			searchRecord : JSON.parse(localStorage.getItem('searchRecord')),
+			searchRecordHot : JSON.parse(localStorage.getItem('searchRecordHot'))
+	    }
+	},
+	methods:{
+		searchKey:function(){
+			if(this.search_input == ''){
+				this.search_input = '露背无袖连衣裙';
+			}
+			//搜索历史
+			var objZ = JSON.parse(localStorage.getItem('searchRecord'));
+			//判断有没有存过信息
+			if(objZ){
+			//如果存的信息有,数量+1
+				if(objZ[this.search_input] >= 0){
+					objZ[this.search_input]++;
+				}else{
+					objZ[this.search_input] = 0;
+				}
+			}else{
+				//如果没存过 新建一个obj
+				objZ = {};
+				objZ[this.search_input] = 0;
+			}
+			//存储到本地数据
+			localStorage.setItem('searchRecord',JSON.stringify(objZ));
+			//热门搜索
+			var objZ2 = JSON.parse(localStorage.getItem('searchRecordHot'));
+			//判断有没有存过信息
+			if(objZ2){
+			//如果存的信息有,数量+1
+				if(objZ2[this.search_input] >= 0){
+					objZ2[this.search_input]++;
+				}else{
+					objZ2[this.search_input] = 0;
+				}
+			}else{
+				//如果没存过 新建一个obj
+				objZ2 = {};
+				objZ2[this.search_input] = 0;
+			}
+			//存储到本地数据
+			localStorage.setItem('searchRecordHot',JSON.stringify(objZ2));
+			//赋值数据
+			this.searchRecord = JSON.parse(localStorage.getItem('searchRecord'));
+			this.searchRecordHot = JSON.parse(localStorage.getItem('searchRecordHot'));
+			this.searchPush();
+		},
+		recordKey:function(key){
+			this.search_input = key;
+			this.searchPush();
+		},
+		searchPush:function(){
+			this.$router.push({path:'/searchlist/',query:{id:this.search_input}});
+//			this.$router.push({name:'searchlist',params:{id:this.search_input}});
+		},
+		deleteSearch:function(){
+			localStorage.removeItem('searchRecord');
+			this.searchRecord = JSON.parse(localStorage.getItem('searchRecord'));
+		}
+	}
+}
 </script>
 
 <style>
@@ -57,5 +125,6 @@
 .search_history .bottom .tip{margin: .08rem 0 0 .15rem;}
 .search_hotwords{padding: .08rem;}
 .search_hotwords .top span{padding-left: .13rem; background: url(../assets/p_feed.png) no-repeat left center; background-size: auto 75%;}
-.search_history .bottom li.hot a{color: #ff4466;}
+.search_hotwords .bottom ul{overflow: hidden;}
+.search_hotwords .bottom li.search_hot a{color: #ff4466;}
 </style>
