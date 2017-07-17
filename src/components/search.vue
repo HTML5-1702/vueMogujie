@@ -98,7 +98,6 @@ export default {
 		},
 		searchPush:function(){
 			this.$router.push({path:'/searchlist/',query:{id:this.search_input}});
-//			this.$router.push({name:'searchlist',params:{id:this.search_input}});
 		},
 		deleteSearch:function(){
 			localStorage.removeItem('searchRecord');
