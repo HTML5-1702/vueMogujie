@@ -1,7 +1,9 @@
 <template>
 	<div id="good-normal">
 		<div class="good-swiper">
-			<img :src="arr1.topImages[0]"/>
+			<div class="img" v-for="(item,value) in arr1.topImages">
+				<img :src="item" v-if="value<1"/>
+			</div>
 			<div class="swiper-page">
 				<span>1</span> /
 				<span>{{arr1.topImages.length}}</span>
@@ -33,8 +35,8 @@
 			</div>
 		</div>
 		<div class="good-privilege">优惠活动（0）</div>
-		<div class="more-sku" v-on:click="goodsOpen">
-			请选择：颜色 尺码
+		<div class="more-sku" v-on:click="goodsOpen(0)">
+			请选择：<span>颜色 尺码</span>
 			<div class="icon-arrow-right">
 				<i class="fa fa-angle-right" aria-hidden="true"></i>
 			</div>
@@ -155,7 +157,7 @@
 					<div class="prop-rows" v-for="item in arr1.skuInfo.props">
 						<p class="prop-rows--title">{{item.label}}:</p>
 						<ul class="prop-list clearfix">
-							<li class="prop-item" v-for="item1 in item.list" v-on:click="itemAct(item1.name)">{{item1.name}}</li>
+							<li class="prop-item" v-for="(item1,index) in item.list" v-on:click="itemAct(item1.type,item1.name,index)" :class="item1.type">{{item1.name}}</li>
 						</ul>
 					</div>
 				</div>
@@ -181,12 +183,16 @@ export default{
 	data(){
 		return{
 			arr1:[],
+			arr2:[],
+			good:{}
 		}
 	},
 	methods:{
+//		隐藏颜色尺寸列表
 		goodsClosc:function(){
 			$('.dialog-core-box').hide()
 		},
+//		显示颜色尺寸列表
 		goodsOpen:function(num){
 			if(num===1){
 				$('.foot').html('<span class="foot-okbtn">确定</span>')
@@ -196,13 +202,73 @@ export default{
 			
 			$('.dialog-core-box').show();
 		},
+//		选择颜色尺寸
+		itemAct:function(type,name,index){
+			$('.'+type).removeClass('is-selected');
+			if(this.good[type]!=name){
+				this.good[type] = name;
+				$($('.'+type)[index]).addClass('is-selected')
+			}else{
+				this.good[type] = '';
+			}
+			var num = 0;
+			for(var i=0;i<this.arr2.length;i++){
+				if(this.good.style&&this.good.size){
+					if(this.good.style==this.arr2[i].style&&this.good.size==this.arr2[i].size){
+						num = this.arr2[i].stock;
+						$('.goods-cont--addon>span').text(this.good.style+" "+this.good.size);
+						$('.more-sku>span').text(this.good.style+" "+this.good.size)
+					}
+				}else if(this.good.style||this.good.size){
+					if(this.good.style){
+						$('.goods-cont--addon>span').text("尺寸");
+						$('.more-sku>span').text("尺寸")
+					}else{
+						$('.goods-cont--addon>span').text("颜色");
+						$('.more-sku>span').text("颜色")
+					}
+					if(this.good.style==this.arr2[i].style||this.good.size==this.arr2[i].size){
+						num += this.arr2[i].stock;
+					}
+				}else{
+					num += this.arr2[i].stock;
+					$('.goods-cont--addon>span').text('颜色 尺寸');
+					$('.more-sku>span').text('颜色 尺寸')
+				}
+			}
+			$('.goods-cont--stock').text('库存'+num+'件');
+			$('.prop-item').removeClass('is-disabled');
+			for(var i=0;i<this.arr2.length;i++){
+				if(this.good.style){
+					if(this.good.style===this.arr2[i].style){
+						$('.goods-cont>img').attr('src',this.arr2[i].img);
+						for(var j=0;j<$('.size').length;j++){
+							if($($('.size')[j]).html()===this.arr2[i].size&&(!this.arr2[i].stock)){
+								$($('.size')[j]).addClass('is-disabled');
+							}
+						}
+					}
+				}else{
+					$('.goods-cont>img').attr('src',this.arr1.topImages[0])
+				}
+				if(this.good.size){
+					for(var j=0;j<$('.style').length;j++){
+						if($($('.style')[j]).html()===this.arr2[i].style&&this.arr2[i].size===this.good.size&&(!this.arr2[i].stock)){
+							$($('.style')[j]).addClass('is-disabled');
+						}
+					}
+				}
+			}
+		}
 	},
 	mounted(){
+		this.good = {};
 		if(this.$route.params.id){
 			localStorage.goodNormal = this.$route.params.id;
 		}
 		this.$http.jsonp('http://m.mogujie.com/jsonp/detail.api/v1?iid='+localStorage.goodNormal+'&template=1-2-detail_normal-1.0.0&_='+new Date().getTime()).then(function(res){
 			this.arr1 = res.body.data;
+			this.arr2 = res.body.data.skuInfo.skus;
 			console.log(res.body.data)
 		},function(res){
 			console.log(res)
@@ -215,7 +281,8 @@ export default{
 #good-normal{padding-bottom: .5rem;background: rgb(234, 234, 234);font-size: .12rem;}
 #good-normal>div{background: white;}
 .good-swiper{width: 100%;height: 3.84rem;position: relative;}
-.good-swiper>img{width: 100%;height: 100%;}
+.good-swiper>.img{width: 100%;height: 100%;}
+.good-swiper img{width: 100%;height: 100%;}
 .swiper-page{position: absolute;background: rgba(0,0,0,.3);border-radius: .12rem;height: .2rem;right: .15rem;bottom: .1rem;font-size: .12rem;line-height: .2rem;padding: 0 .12rem;color: white;}
 .good-title{padding-top: .15rem;}
 .good-title>span{display: block;padding: 0 .15rem;font-size: .14rem;color: #424242;line-height: .18rem;}
@@ -287,7 +354,7 @@ export default{
 .content-btns--buy{background: #ff5777;color: white;}
 
 /*添加购物车*/
-#good-normal .dialog-core-box{position: fixed;z-index: 100;background: rgba(0,0,0,.4);top: 0;bottom: 0;left: 0;right: 0;}
+#good-normal .dialog-core-box{position: fixed;z-index: 100;background: rgba(0,0,0,.4);top: 0;bottom: 0;left: 0;right: 0;display: none;}
 .dialog-core{position: absolute;bottom: 0;transition: all 1s;background: white;width: 100%;}
 .goods{padding: .13rem 0;;}
 .goods>div{float: left;}
@@ -301,6 +368,7 @@ export default{
 .prop-rows--title{line-height: .18rem;}
 .prop-item{float: left;margin: 0 .08rem .08rem 0;padding: 0 .13rem;border: 1px solid #bbb;line-height: .24rem;border-radius: .03rem;}
 .is-selected{border-color: #ed4566;color: #ed4566;}
+.is-disabled{border: 1px dashed #bbb;color: #666;}
 .number{padding: 0 .06rem;margin-bottom: .12rem;}
 .number>p{line-height: .2rem;}
 .number-calculator{border: 1px solid #bbb;border-radius: .02rem;width: .77rem;display: flex;}
