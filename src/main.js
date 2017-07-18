@@ -44,14 +44,10 @@ const routes = [
 	{path : '/shopcar' , component : Shopcar},
 	{name : 'goodnormal' , path : '/goodnormal' , component : GoodNormal},
 	{path : '/mine' , component : Mine},
-<<<<<<< HEAD
-  	{path : '/login',component:Login},
-=======
   {path:'/login',component:Login},
   {path:'/indent',component:Indent},
   {path:'/signIn',component:SignIn},
   {path:'/group',component:Group},
->>>>>>> dd668e1ab488ff778e437c178d8a640288e91014
 	{path : '/search' , component : Search},
 	{path : '/searchlist' , component : SearchList},
 	{path : '/categorylist' , component : CategoryList}
